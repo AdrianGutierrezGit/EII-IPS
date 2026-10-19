@@ -1,0 +1,6 @@
+target
+.sonar
+#sqlite databases
+*.db 
+
+/bin/

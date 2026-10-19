@@ -1,0 +1,194 @@
+IPS2025-PL44 - Sistema de Gestión de Cursos Informáticos
+
+DESCRIPCIÓN DEL SISTEMA
+
+El sistema desarrollado es una aplicación de gestión integral para cursos de formación informática. Permite la administración completa del ciclo de vida de los cursos, desde su planificación hasta su finalización, incluyendo la gestión de inscripciones, pagos y la administración de diferentes perfiles de usuarios.
+
+La aplicación está diseñada para gestionar cursos de formación técnica, permitiendo la creación y planificación de cursos, la inscripción de alumnos, el control de pagos, la gestión de profesores y la administración de todo el proceso formativo. El sistema implementa un modelo de negocio basado en la gestión de plazos, cuotas y estados de los cursos.
+
+El sistema se estructura en torno a cuatro roles principales: alumnos que pueden inscribirse en cursos, profesores que imparten formación, responsables de formación que gestionan la planificación académica, y secretarios administrativos que controlan los aspectos económicos y administrativos. Cada rol tiene acceso a funcionalidades específicas adaptadas a sus necesidades.
+
+
+ROLES DE USUARIO
+
+Alumno: Los alumnos pueden registrarse en nuevos cursos y consultar su estado de inscripción. Tienen acceso a la información de los cursos disponibles y pueden realizar la inscripción proporcionando sus datos personales. El sistema permite la inscripción tanto de alumnos ya registrados como de nuevos alumnos que se dan de alta en el momento de la inscripción.
+
+Profesor: Los profesores pueden ser registrados en el sistema y asociarse a cursos específicos. A través de su perfil pueden acceder a la información de los cursos que imparten y gestionar aspectos relacionados con su actividad docente, incluyendo la emisión de facturas y el control de pagos.
+
+Responsable de Formación: Este rol tiene capacidades de gestión académica amplia. Puede crear nuevos cursos, planificar su desarrollo temporal, asignar profesores a cursos, cerrar cursos cuando finalizan y consultar el estado general de todos los cursos activos. Es el perfil encargado de la planificación académica global.
+
+Secretario Administrativo: Los secretarios administrativos gestionan los aspectos económicos y administrativos del sistema. Pueden registrar pagos de inscripciones de alumnos, gestionar los pagos a profesores, consultar el balance económico de los cursos y administrar las facturas. Tienen acceso a información financiera detallada de todos los cursos.
+
+
+ENTORNO TECNOLÓGICO
+
+El sistema se ha desarrollado utilizando tecnologías Java estándar con una arquitectura MVC (Modelo-Vista-Controlador) que separa claramente la lógica de negocio, la interfaz de usuario y el acceso a datos.
+
+Arquitectura de la Aplicación:
+La aplicación sigue el patrón MVC con tres capas bien definidas. La capa de presentación utiliza Swing para la interfaz gráfica de usuario, proporcionando ventanas independientes para cada funcionalidad. La capa de control gestiona la lógica de aplicación y coordina las interacciones entre vista y modelo. La capa de datos utiliza JDBC con Apache Commons DbUtils para simplificar el acceso a base de datos.
+
+Tecnologías Utilizadas:
+- Java 8 como lenguaje de programación principal
+- Swing para la interfaz gráfica de usuario
+- SQLite como sistema de gestión de base de datos
+- Apache Commons DbUtils para simplificar el acceso a datos
+- Maven como herramienta de gestión de dependencias y construcción
+- JUnit para pruebas unitarias
+- Lombok para la generación automática de código
+
+Estructura del Proyecto:
+El proyecto sigue la estructura estándar de Maven con src/main/java para el código fuente y src/test/java para las pruebas. Los paquetes principales incluyen:
+- giis.demo.tkrun: Contiene la lógica de negocio del sistema de gestión de cursos
+- giis.demo.util: Proporciona utilidades para acceso a datos y manejo de tablas Swing
+- giis.demo.jdbc: Ejemplos de acceso a base de datos con JDBC
+
+Base de Datos:
+Se utiliza SQLite como base de datos embebida, facilitando la distribución y ejecución del sistema sin requerir instalación de un servidor de base de datos externo. El esquema incluye tablas para personas, roles, cursos, inscripciones, pagos y facturas.
+
+Herramientas de Desarrollo:
+- Eclipse IDE con plugin M2Eclipse para desarrollo
+- Git para control de versiones
+- GitHub Actions para integración continua
+- Dependabot para actualización automática de dependencias
+
+
+STORY MAPPING
+
+Sprint 1: Fundación del Sistema
+- HU-01: Como responsable de formación quiero crear un nuevo curso para poder ofrecer formación en nuevas tecnologías
+- HU-02: Como responsable de formación quiero planificar las fechas de un curso para organizar correctamente el calendario académico
+- HU-03: Como alumno quiero poder inscribirme en un curso para acceder a la formación ofrecida
+
+Sprint 2: Gestión de Usuarios y Pagos
+- HU-04: Como secretario administrativo quiero registrar el pago de una inscripción para llevar el control económico
+- HU-05: Como secretario administrativo quiero consultar el estado de inscripciones para gestionar las plazas disponibles
+- HU-06: Como responsable de formación quiero asignar profesores a cursos para garantizar la calidad docente
+
+Sprint 3: Control Académico y Económico
+- HU-07: Como responsable de formación quiero cerrar un curso finalizado para dar por concluida la actividad académica
+- HU-08: Como secretario administrativo quiero registrar pagos a profesores para gestionar la remuneración docente
+- HU-09: Como responsable de formación quiero consultar el estado de todos los cursos para tener visibilidad global
+
+Sprint 4: Gestión Avanzada y Reportes
+- HU-10: Como secretario administrativo quiero consultar el balance económico de cursos para analizar la rentabilidad
+- HU-11: Como alumno quiero cancelar mi inscripción para poder gestionar mi participación
+- HU-12: Como responsable de formación quiero registrar nuevos profesores para ampliar el equipo docente
+
+
+MODELO DE DATOS
+
+El modelo de datos del sistema se estructura alrededor de la entidad central Persona, que puede tener diferentes roles a través de tablas especializadas. Las relaciones principales incluyen:
+
+Tabla Persona: Almacena los datos básicos de todas las personas del sistema (id, nombre, apellidos, email, teléfono).
+
+Tablas de Roles: Secretario_administrativo, Profesor, Responsable_formacion y Alumno, que extienden la información básica de Persona según el rol asignado.
+
+Tabla Curso: Contiene la información de los cursos (id_curso, nombre, fechas de plazo y desarrollo, lugar, cuota, plazas, estado, objetivos, contenidos).
+
+Tabla Inscripcion: Gestiona las inscripciones de alumnos a cursos con su estado (PAGADO, PENDIENTE, CANCELADO).
+
+Tablas de Pagos: Pago para inscripciones de alumnos y Pago_profesor para remuneraciones docentes, ambas vinculadas a facturas correspondientes.
+
+Tabla Actividad_profesor: Relaciona profesores con cursos y define sus remuneraciones.
+
+
+MAPA DE NAVEGACIÓN POR EL INTERFAZ DE USUARIO
+
+La aplicación presenta una interfaz principal con selector de persona que determina las funcionalidades disponibles. La navegación se organiza por roles:
+
+Pantalla Principal: Selector de persona con botones de funcionalidades que se activan según el rol seleccionado.
+
+Flujo Alumno: Inscripción en curso → Formulario de datos → Confirmación
+
+Flujo Secretario: Registro de pagos → Selección de curso → Gestión de inscripciones
+
+Flujo Responsable: Creación de cursos → Planificación → Asignación de profesores → Cierre de cursos
+
+Flujo Profesor: Registro de profesores → Gestión de facturas y pagos
+
+Cada funcionalidad abre una ventana independiente con formularios específicos para la tarea a realizar, manteniendo la consistencia visual y de interacción en toda la aplicación.
+
+
+ANEXO I: PROTOTIPOS DE PANTALLAS
+
+Pantalla Principal (HU-01, HU-04, HU-07, HU-10):
+- Selector desplegable de personas en la parte superior
+- Botones de funcionalidades organizados verticalmente
+- Botones se activan/deshabilitan según el rol seleccionado
+- Diseño simple y limpio con etiquetas claras
+
+Formulario de Creación de Curso (HU-01):
+- Campos de texto para nombre, fechas, lugar, plazas y cuota
+- Áreas de texto para objetivos y contenidos
+- Selector de estado del curso
+- Botones de guardar y cancelar
+
+Formulario de Inscripción de Alumno (HU-03):
+- Campos para datos personales (nombre, apellidos, email, teléfono)
+- Selector de curso disponible
+- Información de cuota y plazas
+- Botón de confirmar inscripción
+
+Pantalla de Registro de Pagos (HU-04):
+- Selector de curso en la parte superior
+- Tabla con lista de alumnos inscritos
+- Campos para cantidad pagada y fecha
+- Botones de aprobar pago y cancelar inscripción
+
+Pantalla de Asignación de Profesores (HU-06):
+- Selector de curso
+- Lista de profesores disponibles
+- Campo para remuneración
+- Botón de asignar profesor al curso
+
+Formulario de Registro de Profesor (HU-12):
+- Campos de datos personales del profesor
+- Validación de email único
+- Botón de registrar con confirmación
+
+Pantalla de Balance Económico (HU-10):
+- Selector de curso o vista general
+- Tabla con ingresos por inscripciones
+- Tabla con gastos por profesores
+- Cálculo automático de balance
+
+Pantalla de Estado de Cursos (HU-09):
+- Tabla con todos los cursos
+- Columnas de estado, plazas ocupadas, fechas
+- Filtros por estado del curso
+- Botón de ver detalles
+
+Formulario de Cierre de Curso (HU-07):
+- Selector de curso activo
+- Resumen de actividad del curso
+- Confirmación de cierre con validaciones
+- Botón de cerrar curso
+
+
+ANEXO II: TABLA DE TAREAS REALIZADAS POR CADA MIEMBRO DEL EQUIPO
+
+Documentación del Sistema:
+- Investigación y análisis de la arquitectura del sistema
+- Recopilación de información sobre roles y funcionalidades
+- Redacción de descripción del sistema
+- Documentación del entorno tecnológico
+- Creación del story mapping con historias de usuario
+- Desarrollo del modelo de datos
+- Diseño del mapa de navegación
+- Creación de prototipos de pantallas
+- Revisión y edición final del documento
+
+Presentación Final:
+- Preparación de diapositivas con contenido del documento
+- Revisión de puntos clave de la documentación
+- Ensayo de presentación
+- Preparación de material de apoyo
+
+Tareas Complementarias:
+- Revisión de código y funcionalidad del sistema
+- Verificación de historias de usuario implementadas
+- Validación de la arquitectura MVC
+- Confirmación de tecnologías utilizadas
+- Revisión del modelo de datos final
+
+Nota: Este documento ha sido elaborado de forma colaborativa por todo el equipo, con cada miembro contribuyendo en diferentes secciones según su expertise y disponibilidad. La coordinación y revisión final ha sido realizada conjuntamente para garantizar la coherencia y calidad del documento final.
