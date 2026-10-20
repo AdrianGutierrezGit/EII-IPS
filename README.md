@@ -1,6 +1,6 @@
 [![Build Status](https://github.com/javiertuya/samples-test-dev/actions/workflows/test.yml/badge.svg)](https://github.com/javiertuya/samples-test-dev/actions/workflows/test.yml)
 [![Javadoc](https://img.shields.io/badge/%20-javadoc-blue)](https://javiertuya.github.io/samples-test-dev/)
-
+*Nota: Proyecto colaborativo desarrollado en equipo de 4 estudiantes para la asignatura de Ingeniería del Proceso Software (IPS) (Universidad de Oviedo).*
 # samples-test-dev
 
 Este proyecto es utilizado como proyecto base o plantilla para el desarrollo y a modo de ejemplo para ilustrar algunos aspectos del desarrollo y automatización de pruebas para las asignaturas relacionadas con ingenieria del software, sistemas de información y pruebas de software.
